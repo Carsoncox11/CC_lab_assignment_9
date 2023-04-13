@@ -14,7 +14,7 @@ struct HashType
 	struct RecordType* record;
 };
 
-//hashes the data by taking in the ASCII value of the letter name and modulus it by the table size
+//hashes the data by taking in the record id and modulus it by the table size
 int hash(int x, int tableSize)
 {
 	return x % tableSize;
@@ -72,8 +72,8 @@ void printRecords(struct RecordType pData[], int dataSz)
 // insert record into the hash table
 void insertRecord(struct HashType *hashTable, struct RecordType *record, int tableSize)
 {
-    // call the hash function to get the index, pass in the ASCII value of the name letter
-	int hashIndex = hash((int) record->name, tableSize);
+    // call the hash function to get the index, pass in the ID value
+	int hashIndex = hash(record->id, tableSize);
 
 	//if it is NULL at that index, assign that index to the record
 	if((hashTable + hashIndex)->record == NULL)
